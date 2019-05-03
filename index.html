@@ -3,24 +3,19 @@
 <head>
 <meta charset=utf-8 />
   <title>Combination of a string</title>
-  <h1>String Combos</h1>
+  <h1>String+Combos</h1>
 </head>
 <body> <p id="demo"></p>
   <script>
-  var super = 'Super';
-  var alpha='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-  var sub1='';
-  var sub2='';
-  var sub3='';
-  var beta'';
+  var alpha= new String 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
 var n=1;
   for (i = 0; i < alpha.length; i++) {
   for(j=0;j<alpha.length;j++){
   for(k=0;k<alpa.length;k++){
-  sub1=substring(k,n);
-  sub2=substring(j,n);
-  sub3=substring(i,n);
-  beta=super+sub1+sub2+sub3;
+  sub1=alpha.substring(k,n);
+  sub2=alpa.substring(j,n);
+  sub3=alpha.substring(i,n);
+  beta="super"+sub1+sub2+sub3;
 document.getElementById("demo").innerHTML = beta;
   }
   }
