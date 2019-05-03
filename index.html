@@ -1,52 +1,67 @@
-<!DOCTYPE html>
-<html>
-<form class="submit-student-form" action="submit_student_form.php" method="post">
-  <h1 class="form-title">Student Form</h1>
-  <label>Name</label>
-  <input type="text" name="first_name" placeholder="Robert Thomas" required>
-  <label>Email</label>
-  <input type="email" name="email" placeholder="Email ID" required>
-  <label>Contact Number</label>
-  <input type='tel' name="telephone" placeholder="+91 91234567890" required>
-  <label>Home Location</label>
-  <input type="text" name="location" placeholder="New York" required>
-  <label>Address</label>
-  <input type="text" name="address" placeholder="Loreum Ipsum" required>
-  <button type="submit">Submit</button>
-</form>
-</html>
-<?php
-if(isset($_POST['email'])) {
-    $email_to = "to@domain.com";
-    $email_subject = "Email subject";
-    $first_name = $_POST['first_name']; // required
-    $email_from = $_POST['email']; // required
-    $telephone = $_POST['telephone']; // not required
-    $location = $_POST['location']; // required
-    $address = $_POST['address']; // required
 
-    function clean_string($string) {
-    $bad = array("content-type","bcc:","to:","cc:","href");
-    return str_replace($bad,"",$string);
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Contact Us Form Example</title>
+
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="pragma" content="no-cache" /> 
+
+</head>
+<body>
+
+<h1>Contact Us Form Example</h1>
+
+
+<form action="//submit.form" id="ContactUs100" method="post" onsubmit="return ValidateForm(this);">
+<script type="text/javascript">
+    function ValidateForm(frm) {
+        if (frm.Name.value == "") { alert('Name is required.'); frm.Name.focus(); return false; }
+        if (frm.FromEmailAddress.value == "") { alert('Email address is required.'); frm.FromEmailAddress.focus(); return false; }
+        if (frm.FromEmailAddress.value.indexOf("@") < 1 || frm.FromEmailAddress.value.indexOf(".") < 1) { alert('Please enter a valid email address.'); frm.FromEmailAddress.focus(); return false; }
+        if (frm.Comments.value == "") { alert('Please enter comments or questions.'); frm.Comments.focus(); return false; }
+        return true;
     }
+    function ValidateForm(to) {
+        if (to.ToEmailAddress.value == "") { alert('Email address is required.'); to.ToEmailAddress.focus(); return false; }
+        if (to.ToEmailAddress.value.indexOf("@") < 1 || to.ToEmailAddress.value.indexOf(".") < 1) { alert('Please enter a valid email address.'); to.ToEmailAddress.focus(); return false; }
+        if (to.Comments.value == "") { alert('Please enter comments or questions.'); to.Comments.focus(); return false; }
+        return true;
+    }
+</script>
+<table style="width:550px;border:0;" cellpadding="8" cellspacing="0">
+<tr> <td>
+<label for="Name">Name*:</label>
+</td> <td>
+<input name="Name" type="text" maxlength="60" style="width:250px;" />
+</td> </tr> <tr> <td>
+<label for="PhoneNumber">Phone number:</label>
+</td> <td>
+<input name="PhoneNumber" type="text" maxlength="43" style="width:250px;" />
+</td> </tr> <tr> <td>
+<label for="ToEmailAddress">Send to*:</label>
+</td> <td>
+<input name="ToEmailAddress" type="text" maxlength="60" style="width:250px;" />
+</td> </tr> <tr> <td>
+<label for="FromEmailAddress">Email address*:</label>
+</td> <td>
+<input name="FromEmailAddress" type="text" maxlength="90" style="width:250px;" />
+</td> </tr> <tr> <td>
+<label for="Comments">Comments*:</label>
+</td> <td>
+<textarea name="Comments" rows="7" cols="40" style="width:350px;"></textarea>
+</td> </tr> <tr> <td>
+* - required fields
+</td> <td>
+<div style="float:right"><a href="https://www.100forms.com" id="lnk100" title="web forms">forms</a></div>
+<input name="skip_Submit" type="submit" value="Submit" />
+<script src="https://www.100forms.com/js/FORMKEY:7GB64WPHHJ8M" type="text/javascript"></script>
+</td> </tr>
+</table>
+</form>
 
-    $email_message = "Form details below.\n\n";
-    $email_message .= "Name: ".clean_string($first_name)."\n";
-    $email_message .= "Email: ".clean_string($email_from)."\n";
-    $email_message .= "Telephone: ".clean_string($telephone)."\n";
-    $email_message .= "Location: ".clean_string($location)."\n";
-    $email_message .= "Address: ".clean_string($address)."\n";
 
-// create email headers
-$headers = 'From: '.$email_from."\r\n".
-'Reply-To: '.$email_from."\r\n" .
-'X-Mailer: PHP/' . phpversion();
-mail($email_to, $email_subject, $email_message, $headers);
-?>
-  <!-- include your own success html here -->
-
-  <div class="feedback">Thank you for contacting us. We will be in touch with you very soon.</div>
-  <?php
-}
-?>
-
+</body>
+</html>
