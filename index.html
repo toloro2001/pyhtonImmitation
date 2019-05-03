@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Contact Us Form Example</title>
+    <title>Contact Us Form</title>
 
     <meta http-equiv="cache-control" content="no-cache" />
     <meta http-equiv="pragma" content="no-cache" /> 
@@ -29,6 +29,7 @@
         if (to.ToEmailAddress.value.indexOf("@") < 1 || to.ToEmailAddress.value.indexOf(".") < 1) { alert('Please enter a valid email address.'); to.ToEmailAddress.focus(); return false; }
         if (to.Comments.value == "") { alert('Please enter comments or questions.'); to.Comments.focus(); return false; }
         return true;
+        <a href="mailto:?subject=Comment&body=to.Comments.value>tell a friend!</a>
     }
 </script>
 <table style="width:550px;border:0;" cellpadding="8" cellspacing="0">
